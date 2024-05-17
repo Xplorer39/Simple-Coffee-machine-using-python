@@ -1,0 +1,43 @@
+<html>
+<head>
+<title>main.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #6aab73;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+main.py</font>
+</center></td></tr></table>
+<pre><span class="s0">from </span><span class="s1">menu </span><span class="s0">import </span><span class="s1">Menu</span>
+<span class="s0">from </span><span class="s1">coffee_maker </span><span class="s0">import </span><span class="s1">CoffeeMaker</span>
+<span class="s0">from </span><span class="s1">money_machine </span><span class="s0">import </span><span class="s1">MoneyMachine</span>
+
+<span class="s1">menu </span><span class="s2">= </span><span class="s1">Menu</span><span class="s2">()</span>
+<span class="s1">coffee_maker </span><span class="s2">= </span><span class="s1">CoffeeMaker</span><span class="s2">()</span>
+<span class="s1">money_machine </span><span class="s2">= </span><span class="s1">MoneyMachine</span><span class="s2">()</span>
+
+<span class="s1">coffeeneeded </span><span class="s2">= </span><span class="s0">True</span>
+<span class="s0">while </span><span class="s1">coffeeneeded</span><span class="s2">:</span>
+    <span class="s1">options </span><span class="s2">= </span><span class="s1">menu</span><span class="s2">.</span><span class="s1">get_items</span><span class="s2">()</span>
+    <span class="s1">choice </span><span class="s2">= </span><span class="s1">input</span><span class="s2">(</span><span class="s3">f&quot;What would you like? (</span><span class="s0">{</span><span class="s1">options</span><span class="s0">}</span><span class="s3">):&quot;</span><span class="s2">)</span>
+    <span class="s0">if </span><span class="s1">choice </span><span class="s2">== </span><span class="s3">'off'</span><span class="s2">:</span>
+        <span class="s1">coffeeneeded </span><span class="s2">= </span><span class="s0">False</span>
+    <span class="s0">elif </span><span class="s1">choice </span><span class="s2">== </span><span class="s3">'report'</span><span class="s2">:</span>
+       <span class="s1">money_machine</span><span class="s2">.</span><span class="s1">report</span><span class="s2">()</span>
+       <span class="s1">coffee_maker</span><span class="s2">.</span><span class="s1">report</span><span class="s2">()</span>
+
+    <span class="s0">else</span><span class="s2">:</span>
+        <span class="s1">drink </span><span class="s2">= </span><span class="s1">menu</span><span class="s2">.</span><span class="s1">find_drink</span><span class="s2">(</span><span class="s1">choice</span><span class="s2">)</span>
+        <span class="s1">print</span><span class="s2">(</span><span class="s1">drink</span><span class="s2">)</span>
+        <span class="s0">if </span><span class="s1">coffee_maker</span><span class="s2">.</span><span class="s1">is_resource_sufficient</span><span class="s2">(</span><span class="s1">drink</span><span class="s2">) </span><span class="s0">and </span><span class="s1">money_machine</span><span class="s2">.</span><span class="s1">make_payment</span><span class="s2">(</span><span class="s1">drink</span><span class="s2">.</span><span class="s1">cost</span><span class="s2">):</span>
+            <span class="s1">coffee_maker</span><span class="s2">.</span><span class="s1">make_coffee</span><span class="s2">(</span><span class="s1">drink</span><span class="s2">)</span>
+</pre>
+</body>
+</html>

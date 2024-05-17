@@ -1,0 +1,61 @@
+<html>
+<head>
+<title>money_machine.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #6aab73;}
+.s4 { color: #2aacb8;}
+.s5 { color: #5f826b; font-style: italic;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+money_machine.py</font>
+</center></td></tr></table>
+<pre><span class="s0">class </span><span class="s1">MoneyMachine</span><span class="s2">:</span>
+
+    <span class="s1">CURRENCY </span><span class="s2">= </span><span class="s3">&quot;$&quot;</span>
+
+    <span class="s1">COIN_VALUES </span><span class="s2">= {</span>
+        <span class="s3">&quot;quarters&quot;</span><span class="s2">: </span><span class="s4">0.25</span><span class="s2">,</span>
+        <span class="s3">&quot;dimes&quot;</span><span class="s2">: </span><span class="s4">0.10</span><span class="s2">,</span>
+        <span class="s3">&quot;nickles&quot;</span><span class="s2">: </span><span class="s4">0.05</span><span class="s2">,</span>
+        <span class="s3">&quot;pennies&quot;</span><span class="s2">: </span><span class="s4">0.01</span>
+    <span class="s2">}</span>
+
+    <span class="s0">def </span><span class="s1">__init__</span><span class="s2">(</span><span class="s1">self</span><span class="s2">):</span>
+        <span class="s1">self</span><span class="s2">.</span><span class="s1">profit </span><span class="s2">= </span><span class="s4">0</span>
+        <span class="s1">self</span><span class="s2">.</span><span class="s1">money_received </span><span class="s2">= </span><span class="s4">0</span>
+
+    <span class="s0">def </span><span class="s1">report</span><span class="s2">(</span><span class="s1">self</span><span class="s2">):</span>
+        <span class="s5">&quot;&quot;&quot;Prints the current profit&quot;&quot;&quot;</span>
+        <span class="s1">print</span><span class="s2">(</span><span class="s3">f&quot;Money: </span><span class="s0">{</span><span class="s1">self</span><span class="s2">.</span><span class="s1">CURRENCY</span><span class="s0">}{</span><span class="s1">self</span><span class="s2">.</span><span class="s1">profit</span><span class="s0">}</span><span class="s3">&quot;</span><span class="s2">)</span>
+
+    <span class="s0">def </span><span class="s1">process_coins</span><span class="s2">(</span><span class="s1">self</span><span class="s2">):</span>
+        <span class="s5">&quot;&quot;&quot;Returns the total calculated from coins inserted.&quot;&quot;&quot;</span>
+        <span class="s1">print</span><span class="s2">(</span><span class="s3">&quot;Please insert coins.&quot;</span><span class="s2">)</span>
+        <span class="s0">for </span><span class="s1">coin </span><span class="s0">in </span><span class="s1">self</span><span class="s2">.</span><span class="s1">COIN_VALUES</span><span class="s2">:</span>
+            <span class="s1">self</span><span class="s2">.</span><span class="s1">money_received </span><span class="s2">+= </span><span class="s1">int</span><span class="s2">(</span><span class="s1">input</span><span class="s2">(</span><span class="s3">f&quot;How many </span><span class="s0">{</span><span class="s1">coin</span><span class="s0">}</span><span class="s3">?: &quot;</span><span class="s2">)) * </span><span class="s1">self</span><span class="s2">.</span><span class="s1">COIN_VALUES</span><span class="s2">[</span><span class="s1">coin</span><span class="s2">]</span>
+        <span class="s0">return </span><span class="s1">self</span><span class="s2">.</span><span class="s1">money_received</span>
+
+    <span class="s0">def </span><span class="s1">make_payment</span><span class="s2">(</span><span class="s1">self</span><span class="s2">, </span><span class="s1">cost</span><span class="s2">):</span>
+        <span class="s5">&quot;&quot;&quot;Returns True when payment is accepted, or False if insufficient.&quot;&quot;&quot;</span>
+        <span class="s1">self</span><span class="s2">.</span><span class="s1">process_coins</span><span class="s2">()</span>
+        <span class="s0">if </span><span class="s1">self</span><span class="s2">.</span><span class="s1">money_received </span><span class="s2">&gt;= </span><span class="s1">cost</span><span class="s2">:</span>
+            <span class="s1">change </span><span class="s2">= </span><span class="s1">round</span><span class="s2">(</span><span class="s1">self</span><span class="s2">.</span><span class="s1">money_received </span><span class="s2">- </span><span class="s1">cost</span><span class="s2">, </span><span class="s4">2</span><span class="s2">)</span>
+            <span class="s1">print</span><span class="s2">(</span><span class="s3">f&quot;Here is </span><span class="s0">{</span><span class="s1">self</span><span class="s2">.</span><span class="s1">CURRENCY</span><span class="s0">}{</span><span class="s1">change</span><span class="s0">} </span><span class="s3">in change.&quot;</span><span class="s2">)</span>
+            <span class="s1">self</span><span class="s2">.</span><span class="s1">profit </span><span class="s2">+= </span><span class="s1">cost</span>
+            <span class="s1">self</span><span class="s2">.</span><span class="s1">money_received </span><span class="s2">= </span><span class="s4">0</span>
+            <span class="s0">return True</span>
+        <span class="s0">else</span><span class="s2">:</span>
+            <span class="s1">print</span><span class="s2">(</span><span class="s3">&quot;Sorry that's not enough money. Money refunded.&quot;</span><span class="s2">)</span>
+            <span class="s1">self</span><span class="s2">.</span><span class="s1">money_received </span><span class="s2">= </span><span class="s4">0</span>
+            <span class="s0">return False</span>
+</pre>
+</body>
+</html>

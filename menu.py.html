@@ -1,0 +1,56 @@
+<html>
+<head>
+<title>menu.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #5f826b; font-style: italic;}
+.s4 { color: #6aab73;}
+.s5 { color: #2aacb8;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+menu.py</font>
+</center></td></tr></table>
+<pre><span class="s0">class </span><span class="s1">MenuItem</span><span class="s2">:</span>
+    <span class="s3">&quot;&quot;&quot;Models each Menu Item.&quot;&quot;&quot;</span>
+    <span class="s0">def </span><span class="s1">__init__</span><span class="s2">(</span><span class="s1">self</span><span class="s2">, </span><span class="s1">name</span><span class="s2">, </span><span class="s1">water</span><span class="s2">, </span><span class="s1">milk</span><span class="s2">, </span><span class="s1">coffee</span><span class="s2">, </span><span class="s1">cost</span><span class="s2">):</span>
+        <span class="s1">self</span><span class="s2">.</span><span class="s1">name </span><span class="s2">= </span><span class="s1">name</span>
+        <span class="s1">self</span><span class="s2">.</span><span class="s1">cost </span><span class="s2">= </span><span class="s1">cost</span>
+        <span class="s1">self</span><span class="s2">.</span><span class="s1">ingredients </span><span class="s2">= {</span>
+            <span class="s4">&quot;water&quot;</span><span class="s2">: </span><span class="s1">water</span><span class="s2">,</span>
+            <span class="s4">&quot;milk&quot;</span><span class="s2">: </span><span class="s1">milk</span><span class="s2">,</span>
+            <span class="s4">&quot;coffee&quot;</span><span class="s2">: </span><span class="s1">coffee</span>
+        <span class="s2">}</span>
+
+
+<span class="s0">class </span><span class="s1">Menu</span><span class="s2">:</span>
+    <span class="s3">&quot;&quot;&quot;Models the Menu with drinks.&quot;&quot;&quot;</span>
+    <span class="s0">def </span><span class="s1">__init__</span><span class="s2">(</span><span class="s1">self</span><span class="s2">):</span>
+        <span class="s1">self</span><span class="s2">.</span><span class="s1">menu </span><span class="s2">= [</span>
+            <span class="s1">MenuItem</span><span class="s2">(</span><span class="s1">name</span><span class="s2">=</span><span class="s4">&quot;latte&quot;</span><span class="s2">, </span><span class="s1">water</span><span class="s2">=</span><span class="s5">200</span><span class="s2">, </span><span class="s1">milk</span><span class="s2">=</span><span class="s5">150</span><span class="s2">, </span><span class="s1">coffee</span><span class="s2">=</span><span class="s5">24</span><span class="s2">, </span><span class="s1">cost</span><span class="s2">=</span><span class="s5">2.5</span><span class="s2">),</span>
+            <span class="s1">MenuItem</span><span class="s2">(</span><span class="s1">name</span><span class="s2">=</span><span class="s4">&quot;espresso&quot;</span><span class="s2">, </span><span class="s1">water</span><span class="s2">=</span><span class="s5">50</span><span class="s2">, </span><span class="s1">milk</span><span class="s2">=</span><span class="s5">0</span><span class="s2">, </span><span class="s1">coffee</span><span class="s2">=</span><span class="s5">18</span><span class="s2">, </span><span class="s1">cost</span><span class="s2">=</span><span class="s5">1.5</span><span class="s2">),</span>
+            <span class="s1">MenuItem</span><span class="s2">(</span><span class="s1">name</span><span class="s2">=</span><span class="s4">&quot;cappuccino&quot;</span><span class="s2">, </span><span class="s1">water</span><span class="s2">=</span><span class="s5">250</span><span class="s2">, </span><span class="s1">milk</span><span class="s2">=</span><span class="s5">50</span><span class="s2">, </span><span class="s1">coffee</span><span class="s2">=</span><span class="s5">24</span><span class="s2">, </span><span class="s1">cost</span><span class="s2">=</span><span class="s5">3</span><span class="s2">),</span>
+        <span class="s2">]</span>
+
+    <span class="s0">def </span><span class="s1">get_items</span><span class="s2">(</span><span class="s1">self</span><span class="s2">):</span>
+        <span class="s3">&quot;&quot;&quot;Returns all the names of the available menu items&quot;&quot;&quot;</span>
+        <span class="s1">options </span><span class="s2">= </span><span class="s4">&quot;&quot;</span>
+        <span class="s0">for </span><span class="s1">item </span><span class="s0">in </span><span class="s1">self</span><span class="s2">.</span><span class="s1">menu</span><span class="s2">:</span>
+            <span class="s1">options </span><span class="s2">+= </span><span class="s4">f&quot;</span><span class="s0">{</span><span class="s1">item</span><span class="s2">.</span><span class="s1">name</span><span class="s0">}</span><span class="s4">/&quot;</span>
+        <span class="s0">return </span><span class="s1">options</span>
+
+    <span class="s0">def </span><span class="s1">find_drink</span><span class="s2">(</span><span class="s1">self</span><span class="s2">, </span><span class="s1">order_name</span><span class="s2">):</span>
+        <span class="s3">&quot;&quot;&quot;Searches the menu for a particular drink by name. Returns that item if it exists, otherwise returns None&quot;&quot;&quot;</span>
+        <span class="s0">for </span><span class="s1">item </span><span class="s0">in </span><span class="s1">self</span><span class="s2">.</span><span class="s1">menu</span><span class="s2">:</span>
+            <span class="s0">if </span><span class="s1">item</span><span class="s2">.</span><span class="s1">name </span><span class="s2">== </span><span class="s1">order_name</span><span class="s2">:</span>
+                <span class="s0">return </span><span class="s1">item</span>
+        <span class="s1">print</span><span class="s2">(</span><span class="s4">&quot;Sorry that item is not available.&quot;</span><span class="s2">)</span>
+</pre>
+</body>
+</html>

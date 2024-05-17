@@ -1,0 +1,51 @@
+<html>
+<head>
+<title>coffee_maker.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #5f826b; font-style: italic;}
+.s4 { color: #6aab73;}
+.s5 { color: #2aacb8;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+coffee_maker.py</font>
+</center></td></tr></table>
+<pre><span class="s0">class </span><span class="s1">CoffeeMaker</span><span class="s2">:</span>
+    <span class="s3">&quot;&quot;&quot;Models the machine that makes the coffee&quot;&quot;&quot;</span>
+    <span class="s0">def </span><span class="s1">__init__</span><span class="s2">(</span><span class="s1">self</span><span class="s2">):</span>
+        <span class="s1">self</span><span class="s2">.</span><span class="s1">resources </span><span class="s2">= {</span>
+            <span class="s4">&quot;water&quot;</span><span class="s2">: </span><span class="s5">300</span><span class="s2">,</span>
+            <span class="s4">&quot;milk&quot;</span><span class="s2">: </span><span class="s5">200</span><span class="s2">,</span>
+            <span class="s4">&quot;coffee&quot;</span><span class="s2">: </span><span class="s5">100</span><span class="s2">,</span>
+        <span class="s2">}</span>
+
+    <span class="s0">def </span><span class="s1">report</span><span class="s2">(</span><span class="s1">self</span><span class="s2">):</span>
+        <span class="s3">&quot;&quot;&quot;Prints a report of all resources.&quot;&quot;&quot;</span>
+        <span class="s1">print</span><span class="s2">(</span><span class="s4">f&quot;Water: </span><span class="s0">{</span><span class="s1">self</span><span class="s2">.</span><span class="s1">resources</span><span class="s2">[</span><span class="s4">'water'</span><span class="s2">]</span><span class="s0">}</span><span class="s4">ml&quot;</span><span class="s2">)</span>
+        <span class="s1">print</span><span class="s2">(</span><span class="s4">f&quot;Milk: </span><span class="s0">{</span><span class="s1">self</span><span class="s2">.</span><span class="s1">resources</span><span class="s2">[</span><span class="s4">'milk'</span><span class="s2">]</span><span class="s0">}</span><span class="s4">ml&quot;</span><span class="s2">)</span>
+        <span class="s1">print</span><span class="s2">(</span><span class="s4">f&quot;Coffee: </span><span class="s0">{</span><span class="s1">self</span><span class="s2">.</span><span class="s1">resources</span><span class="s2">[</span><span class="s4">'coffee'</span><span class="s2">]</span><span class="s0">}</span><span class="s4">g&quot;</span><span class="s2">)</span>
+
+    <span class="s0">def </span><span class="s1">is_resource_sufficient</span><span class="s2">(</span><span class="s1">self</span><span class="s2">, </span><span class="s1">drink</span><span class="s2">):</span>
+        <span class="s3">&quot;&quot;&quot;Returns True when order can be made, False if ingredients are insufficient.&quot;&quot;&quot;</span>
+        <span class="s1">can_make </span><span class="s2">= </span><span class="s0">True</span>
+        <span class="s0">for </span><span class="s1">item </span><span class="s0">in </span><span class="s1">drink</span><span class="s2">.</span><span class="s1">ingredients</span><span class="s2">:</span>
+            <span class="s0">if </span><span class="s1">drink</span><span class="s2">.</span><span class="s1">ingredients</span><span class="s2">[</span><span class="s1">item</span><span class="s2">] &gt; </span><span class="s1">self</span><span class="s2">.</span><span class="s1">resources</span><span class="s2">[</span><span class="s1">item</span><span class="s2">]:</span>
+                <span class="s1">print</span><span class="s2">(</span><span class="s4">f&quot;Sorry there is not enough </span><span class="s0">{</span><span class="s1">item</span><span class="s0">}</span><span class="s4">.&quot;</span><span class="s2">)</span>
+                <span class="s1">can_make </span><span class="s2">= </span><span class="s0">False</span>
+        <span class="s0">return </span><span class="s1">can_make</span>
+
+    <span class="s0">def </span><span class="s1">make_coffee</span><span class="s2">(</span><span class="s1">self</span><span class="s2">, </span><span class="s1">order</span><span class="s2">):</span>
+        <span class="s3">&quot;&quot;&quot;Deducts the required ingredients from the resources.&quot;&quot;&quot;</span>
+        <span class="s0">for </span><span class="s1">item </span><span class="s0">in </span><span class="s1">order</span><span class="s2">.</span><span class="s1">ingredients</span><span class="s2">:</span>
+            <span class="s1">self</span><span class="s2">.</span><span class="s1">resources</span><span class="s2">[</span><span class="s1">item</span><span class="s2">] -= </span><span class="s1">order</span><span class="s2">.</span><span class="s1">ingredients</span><span class="s2">[</span><span class="s1">item</span><span class="s2">]</span>
+        <span class="s1">print</span><span class="s2">(</span><span class="s4">f&quot;Here is your </span><span class="s0">{</span><span class="s1">order</span><span class="s2">.</span><span class="s1">name</span><span class="s0">} </span><span class="s4">☕️. Enjoy!&quot;</span><span class="s2">)</span>
+</pre>
+</body>
+</html>
